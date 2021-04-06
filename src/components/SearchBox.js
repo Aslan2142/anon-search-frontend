@@ -7,14 +7,19 @@ class Home extends React.Component {
         text: ''
     }
 
+    search = () => {
+        this.props.onSearch(this.state.text)
+    }
+
     render() {
         return (
             <div>
-                <InputGroup className={this.props.home ? 'search-home' : 'search'}>
-                    <FormControl value={this.state.text}
+                <InputGroup className={this.props.home ? 'search search-home' : 'search'}>
+                    <FormControl className="input" value={this.state.text}
                         onChange={e => this.setState({text: e.target.value})}
+                        onKeyDown={e => {if (e.key === 'Enter') this.search()}}
                     />
-                    <Button variant="secondary" onClick={e => this.props.onSearch(this.state.text)}>Search</Button>
+                    <Button className="button-alt" onClick={e => this.search()}>Search</Button>
                 </InputGroup>
             </div>
         )

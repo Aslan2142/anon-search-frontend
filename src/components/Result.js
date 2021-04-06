@@ -11,7 +11,7 @@ class Home extends React.Component {
         return (
             <div>
                 <a className="no-dec" href={this.props.link}>
-                    <Card className="result mt-3">
+                    <Card className="result">
                         <Card.Body>
                             <Card.Title>{this.props.title}</Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">{this.props.link}</Card.Subtitle>

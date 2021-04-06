@@ -1,22 +1,49 @@
+@import "bootstrap/scss/bootstrap-utilities";
+@import "bootstrap/scss/buttons";
+
 body {
-    background-color: #212529;
+    background-color: $gray-800;
+}
+
+.button {
+    @extend .btn-dark;
+}
+
+.button-alt {
+    @extend .btn-light;
+}
+
+.input {
+    @extend .bg-dark;
+    @extend .text-light;
+    @extend .border-dark;
+}
+
+.search {
+    margin-left: auto;
+    margin-right: auto;
+    transition: width 1s, margin-top 1s;
+    transition-timing-function: ease-out;
 }
 
 .search-home {
     margin-top: 300px;
-    margin-left: auto;
-    margin-right: auto;
     width: 600px;
 }
 
-.search {
-
-}
-
 .result {
-    
+    @extend .bg-dark;
+    @extend .text-light;
+    margin-top: 1rem;
+    animation-name: result-fly-in;
+    animation-duration: 1s;
 }
 
 .no-dec {
     text-decoration: none;
+}
+
+@keyframes result-fly-in {
+    from {margin-top: 1000px;}
+    to {margin-top: 1rem;}
 }
