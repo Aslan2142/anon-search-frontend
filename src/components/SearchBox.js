@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputGroup, FormControl, Button } from 'react-bootstrap';
 
-class Home extends React.Component {
+class SearchBox extends React.Component {
 
     state = {
         text: ''
@@ -27,4 +27,4 @@ class Home extends React.Component {
 
 }
 
-export default Home;
+export default SearchBox;

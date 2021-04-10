@@ -22,7 +22,7 @@ body {
 .search {
     margin-left: auto;
     margin-right: auto;
-    transition: width 1s, margin-top 1s;
+    transition: width 0.5s, margin-top 0.5s;
     transition-timing-function: ease-out;
 }
 
@@ -31,12 +31,40 @@ body {
     width: 600px;
 }
 
+.loading {
+    position: absolute;
+    display: block;
+    z-index: 100;
+    margin-top: 10%;
+    margin-left: 40%;
+    width: 20%;
+}
+
+.transparent {
+    opacity: 0;
+}
+
+.image-container {
+    @extend .bg-dark;
+    @extend .text-light;
+    margin-top: 1rem;
+    transition: opacity 0.5s;
+    animation-name: result-fly-in;
+    animation-duration: 0.5s;
+}
+
+.image-container-image {
+    margin-right: 10px;
+    border-radius: 0.25em;
+}
+
 .result {
     @extend .bg-dark;
     @extend .text-light;
     margin-top: 1rem;
+    transition: opacity 0.5s;
     animation-name: result-fly-in;
-    animation-duration: 1s;
+    animation-duration: 0.8s;
 }
 
 .no-dec {
