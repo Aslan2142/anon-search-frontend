@@ -1,10 +1,11 @@
 import React from 'react';
 import Axios from 'axios';
+import { withRouter } from 'react-router-dom'
 import { Container } from 'react-bootstrap';
 
 import SearchBox from './SearchBox';
 import Result from './Result';
-import ImageContainer from './ImageContainer';
+import QuickResult from './QuickResult';
 
 import Loading from '../loading.svg';
 
@@ -14,11 +15,26 @@ class Home extends React.Component {
         searching: false,
         searchQuery: '',
         visible: true,
-        imageContainer: { title: '', description: '', images: [] },
+        animated: true,
+        quickResult: { title: '', description: '', images: [] },
         results: []
     }
 
-    search = query => {
+    componentDidMount = () => {
+        if (this.props.query !== '') {
+            this.search(this.props.query.slice(this.props.query.indexOf('=') + 1), false);
+        }
+    }
+
+    search = (query, animated) => {
+        this.setState({
+            animated
+        });
+
+        this.props.history.push({
+            search: '?q=' + query
+        });
+
         this.setState({
             searching: query !== '',
             searchQuery: query,
@@ -39,7 +55,7 @@ class Home extends React.Component {
             this.setState({
                 searching: false,
                 visible: true,
-                imageContainer: response.data.imageContainer,
+                quickResult: response.data.quickResult,
                 results: response.data.results
             });
         });
@@ -49,9 +65,10 @@ class Home extends React.Component {
         return <img className="loading" alt="Loading..." src={Loading} />;
     }
 
-    imageContainer = () => {
-        if (this.state.imageContainer.title !== '') {
-            return <ImageContainer visible={this.state.visible} title={this.state.imageContainer.title} description={this.state.imageContainer.description} images={this.state.imageContainer.images} />;
+    quickResult = () => {
+        if (this.state.quickResult.title !== '') {
+            return <QuickResult visible={this.state.visible} animated={this.state.animated}
+                        title={this.state.quickResult.title} description={this.state.quickResult.description} images={this.state.quickResult.images} />;
         } else {
             return;
         }
@@ -59,7 +76,8 @@ class Home extends React.Component {
 
     results = () => {
         return this.state.results.map((result, index) => {
-            return ( <Result key={'result-' + index} visible={this.state.visible} title={result.title} link={result.link} description={result.description} /> );
+            return ( <Result key={'result-' + index} visible={this.state.visible} animated={this.state.animated}
+                        title={result.title} link={result.link} description={result.description} /> );
         });
     }
 
@@ -68,8 +86,8 @@ class Home extends React.Component {
             <div>
                 {this.state.searching ? this.loading() : null}
                 <Container fluid="lg" className="mt-5">
-                    <SearchBox home={this.state.searchQuery === ''} onSearch={this.search} />
-                    {(this.state.searchQuery === '' || this.state.searching) && this.state.visible ? null : this.imageContainer()}
+                    <SearchBox home={this.state.searchQuery === ''} onSearch={this.search} query={this.props.query} />
+                    {(this.state.searchQuery === '' || this.state.searching) && this.state.visible ? null : this.quickResult()}
                     {(this.state.searchQuery === '' || this.state.searching) && this.state.visible ? null : this.results()}
                     <div className="mb-5"></div>
                 </Container>
@@ -79,4 +97,4 @@ class Home extends React.Component {
 
 }
 
-export default Home;
+export default withRouter(Home);

@@ -44,7 +44,7 @@ body {
     opacity: 0;
 }
 
-.image-container {
+.quick-result {
     @extend .bg-dark;
     @extend .text-light;
     margin-top: 1rem;
@@ -53,7 +53,8 @@ body {
     animation-duration: 0.5s;
 }
 
-.image-container-image {
+.quick-result-image {
+    margin-top: 10px;
     margin-right: 10px;
     border-radius: 0.25em;
 }
@@ -67,8 +68,18 @@ body {
     animation-duration: 0.8s;
 }
 
+.no-animation {
+    animation-duration: 0s;
+}
+
 .no-dec {
     text-decoration: none;
+}
+
+.input-dark:focus {   
+    outline: none !important;
+    border:1px solid #f8f9fa;
+    box-shadow: 0 0 0px 4px #f8f9fa66;
 }
 
 @keyframes result-fly-in {

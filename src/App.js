@@ -1,13 +1,22 @@
+import React from 'react';
+import { BrowserRouter, Route, useLocation } from 'react-router-dom';
+
 import Home from './components/Home';
 
 import './App.scss'
 
-function App() {
-  return (
-    <div className="App">
-      <Home />
-    </div>
-  );
+class App extends React.Component {
+
+  render() {
+    return (
+      <div className="App">
+        <BrowserRouter>
+          <Route component={() => <Home query={useLocation().search} />} />
+        </BrowserRouter>
+      </div>
+    );
+  }
+
 }
 
 export default App;
