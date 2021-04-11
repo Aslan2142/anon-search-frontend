@@ -15,7 +15,7 @@ class Result extends React.Component {
                         <Card.Body>
                             <Card.Title>{this.props.title}</Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">{this.props.link}</Card.Subtitle>
-                            <Card.Text>{this.props.description}</Card.Text>
+                            <Card.Text className="regular-font">{this.props.description}</Card.Text>
                         </Card.Body>
                     </Card>
                 </a>

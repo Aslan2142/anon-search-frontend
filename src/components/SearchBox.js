@@ -12,7 +12,7 @@ class SearchBox extends React.Component {
         if (this.props.query !== this.state.text) {
             let text = this.props.query.slice(this.props.query.indexOf('=') + 1);
             text = urlDecode(text);
-            text = text.replace('+', ' ');
+            text = text.replaceAll('+', ' ');
             this.setState({
                 text: text
             });

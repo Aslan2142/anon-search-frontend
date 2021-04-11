@@ -7,7 +7,7 @@ import SearchBox from './SearchBox';
 import Result from './Result';
 import QuickResult from './QuickResult';
 
-import Loading from '../loading.svg';
+import Loading from '../resources/loading.svg';
 
 class Home extends React.Component {
 
@@ -22,7 +22,7 @@ class Home extends React.Component {
 
     componentDidMount = () => {
         if (this.props.query !== '') {
-            this.search(this.props.query.slice(this.props.query.indexOf('=') + 1), false);
+            this.search(this.props.query.slice(this.props.query.indexOf('=') + 1), this.props.query.startsWith('?aq='));
         }
     }
 

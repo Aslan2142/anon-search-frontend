@@ -3,6 +3,7 @@
 
 body {
     background-color: $gray-800;
+    font-family: Nunito-SemiBold;
 }
 
 .button {
@@ -22,6 +23,7 @@ body {
 .search {
     margin-left: auto;
     margin-right: auto;
+    max-width: 100%;
     transition: width 0.5s, margin-top 0.5s;
     transition-timing-function: ease-out;
 }
@@ -29,6 +31,7 @@ body {
 .search-home {
     margin-top: 300px;
     width: 600px;
+    max-width: 100%;
 }
 
 .loading {
@@ -68,6 +71,14 @@ body {
     animation-duration: 0.8s;
 }
 
+.regular-font {
+    font-family: Nunito-Regular;
+}
+
+.light-font {
+    font-family: Nunito-Light;
+}
+
 .no-animation {
     animation-duration: 0s;
 }
@@ -85,4 +96,19 @@ body {
 @keyframes result-fly-in {
     from {margin-top: 1000px;}
     to {margin-top: 1rem;}
+}
+
+@font-face {
+    font-family: 'Nunito-Light';
+    src: local('Nunito-Light'), url(./resources/nunito-light.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Nunito-Regular';
+    src: local('Nunito-Regular'), url(./resources/nunito-regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Nunito-SemiBold';
+    src: local('Nunito-SemiBold'), url(./resources/nunito-semibold.ttf) format('truetype');
 }
