@@ -27,6 +27,8 @@ class Home extends React.Component {
     }
 
     search = (query, animated) => {
+        if (query === '' && this.state.searchQuery === '') return;
+
         this.setState({
             animated
         });
