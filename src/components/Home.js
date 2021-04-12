@@ -21,6 +21,8 @@ class Home extends React.Component {
     }
 
     componentDidMount = () => {
+        document.title = 'Anon Search';
+
         if (this.props.query !== '') {
             this.search(this.props.query.slice(this.props.query.indexOf('=') + 1), this.props.query.startsWith('?aq='));
         }
@@ -49,7 +51,10 @@ class Home extends React.Component {
             });
         }, 500);
 
-        if (query === '') return;
+        if (query === '') {
+            document.title = 'Anon Search';
+            return;
+        }
 
         Axios.get('https://aslan2142.space/search/api/websearch?q=' + query).then(response => {
             if (response.data.error !== undefined) return;
@@ -60,6 +65,8 @@ class Home extends React.Component {
                 quickResult: response.data.quickResult,
                 results: response.data.results
             });
+
+            document.title = query + ' | Anon Search';
         });
     }
 

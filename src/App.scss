@@ -3,7 +3,7 @@
 
 body {
     background-color: $gray-800;
-    font-family: Nunito-SemiBold;
+    font-family: Nunito-Bold;
 }
 
 .button {
@@ -111,4 +111,9 @@ body {
 @font-face {
     font-family: 'Nunito-SemiBold';
     src: local('Nunito-SemiBold'), url(./resources/nunito-semibold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Nunito-Bold';
+    src: local('Nunito-Bold'), url(./resources/nunito-bold.ttf) format('truetype');
 }
